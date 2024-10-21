@@ -2,19 +2,19 @@ body{
     flex-direction: column;
 }
 *{
-
     margin:0;
     padding:0;
     color:#83e935;
     font-size:55px;
     text-transform: uppercase;
-    font-family: 'bold', Geist;
+
 }
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'bold', Geist;
 }
 h1{
     font-size:2em;
