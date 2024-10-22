@@ -1,20 +1,21 @@
+
 body{
     flex-direction: column;
 }
 *{
-    font-family: 'Montserrat', sans-serif;
     margin:0;
     padding:0;
     color:#83e935;
     font-size:55px;
     text-transform: uppercase;
-    font-family: 'bold', geist;
+
 }
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'bold', Geist;
 }
 h1{
     font-size:2em;
@@ -57,17 +58,14 @@ li a i:hover{
         height: 0;
         top: 50%;
         left: 50%;
-        top: var(--mouse-y);
-        left: var(--mouse-x);
         transform-style: flat;
         transform: translate3d(-50%,-50%,0);
-        background: rgba(white,.1);
         border-radius: 100%;
         transition: width .3s ease, height .3s ease;
     }
     &:focus,
     &:hover {
-        background: darken (#83e935,7%);
+
     }
     &:active {
         &:after {
