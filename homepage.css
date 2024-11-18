@@ -1,22 +1,21 @@
-p { font-family: 'Geist', Geist-bold; }
-
-.main {
+body{
     flex-direction: column;
 }
-.main{
+*{
+    text-align: center;
     margin:0;
     padding:0;
     color:#83e935;
     font-size:55px;
     text-transform: uppercase;
+    font-family: 'Geist';
 
 }
-.main {
+body{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'bold', Geist;
 }
 h1{
     font-size:2em;
@@ -78,8 +77,6 @@ li a i:hover{
 
 
 
-
-
 @media (min-width: 768px) {
     * {
         font-size: 55px;
@@ -100,4 +97,9 @@ li a i:hover{
         width: auto;
         float: none;
     }
+}
+
+@font-face {
+    font-family: 'Geist'; /* Name your font family */
+    src: url('webfontkit-20241021-152548/geist-bold-webfont.woff'); /* Locate the .ttf file within your directory*/
 }
