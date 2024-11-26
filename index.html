@@ -1,54 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
-    <!-- MDB icon -->
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Google Fonts Roboto -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
-    <!-- MDB -->
-    <link rel="stylesheet" href="css/mdb.min.css" />
-    <link rel="stylesheet" href="homepage.css">
-    <script src="homepage.js"></script>
-    <link rel="stylesheet" href="webfontkit-20241021-152548/stylesheet.css">
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Scrolling Sections</title>
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+  />
+  <link rel="stylesheet" href="homepage.css">
+  <script type="module" src="homepage.js"></script>
+  <script type="module" src="gsp.js"></script>
 
-  <body style="background-color: #faf9f9">
-  <div class = "main">
-    <!-- Start your project here-->
+</head>
 
-
-    <div id="start">
-		<span
-                class="txt-rotate"
-                data-period="2000"
-                data-rotate='[ "Jakub Kokeš","graphic designer" ]'>
-     </span>
-
-    </div>
-    <div class="buttons">
-      <a href="#" class="button" id="button">ABOUT</a>
-      <a href="#" class="button" id="button">GRAPHICS</a>
-      <a href="#" class="button" id="button">MORE</a>
-    </div>
+<body>
+<!-- Úvodní sekce (fullscreen) -->
+<div id="intro" class="intro">
+  <div class="letters">
+    <!-- Jednotlivá písmena pro animaci -->
+    <span class="letter">J</span>
+    <span class="letter">a</span>
+    <span class="letter">k</span>
+    <span class="letter">u</span>
+    <span class="letter">b</span>
+    <span class="letter"> </span>
+    <span class="letter">K</span>
+    <span class="letter">o</span>
+    <span class="letter">k</span>
+    <span class="letter">e</span>
+    <span class="letter">š</span>
+    <span class="letter"> </span>
+    <span class="letter">w</span>
+    <span class="letter">e</span>
+    <span class="letter">b</span>
   </div>
+</div>
+<div class ="main-content">
+<div id="smooth-wrapper">
+  <div id="smooth-content">
 
-    <!-- End your project here-->
 
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript"></script>
-  </body>
+
+<!-- Sekce obsahu -->
+    <section class="section" id="start">
+      <div class="content" data-speed="0.5">
+        <span class="txt-rotate" data-period="2000" data-rotate='[ "Jakub Kokeš", "Graphic Designer" ]'></span>
+        <div class="buttons-wrapper">
+          <div class="buttons">
+            <a href="#about" class="button">ABOUT</a>
+            <a href="#slider-wrapper" class="button">GRAPHICS</a>
+            <a href="#section3" class="button">MORE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="section1" data-speed="0.5">
+      <div class="content">
+        <div class="scroll-rectangle top-rectangle"></div>
+        <p class="typing-text" data-text="Jmenuji se Jakub Kokeš">Jmenuji se Jakub Kokeš</p>
+        <div class="scroll-rectangle bottom-rectangle"></div>
+      </div>
+    </section>
+
+
+    <section class="about-section" id="about">
+      <div class="about-photo">
+        <img src="img/DJF09287.jpg" alt="Jakub Kokeš" />
+        <div class="decor-line left-line"></div> <!-- Dekorace pod fotkou -->
+      </div>
+
+      <div class="about-content">
+        <div class="decor-line right-line"></div> <!-- Dekorace nad textem -->
+        <h2 class="animated-title">O mně</h2>
+
+        <p class="animated-text">
+          Jsem nadšený grafik a tvůrce fotbalových plakátů a taky HW specialista.
+          Můj cíl je dostat se co nejdále v grafických schopnostech.
+        </p>
+
+      </div>
+    </section>
+    <section class="stats-section" id="stats">
+      <h2 class="stats-title">STATS</h2>
+      <div class="stats-container">
+        <div class="stat-item">
+          <p class="stat-number" data-target="100">0</p>
+          <p class="stat-label">Spokojených klientů</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number" data-target="50">0</p>
+          <p class="stat-label">Dokončených projektů</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number" data-target="2000">0</p>
+          <p class="stat-label">Hodin strávených grafikou</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="parallax-section">
+      <div class="parallax-content">
+
+    <div class="slider-wrapper">
+      <div class="slider-content">
+        <img src="img/cesko vs kanada.jpg" alt="Image 1">
+        <img src="img/rohony_album.jpg" alt="Image 2">
+        <img src="img/cr portugal.jpg" alt="Image 3">
+        <img src="img/sparta atletico.jpg" alt="Image 4">
+        <img src="img/road to gloryff.jpg" alt="Image 5">
+      </div>
+    </div>
+      </div>
+    </section>
+
+
+
+<section class="section" id="section4">
+  <div class="content">
+    <h1>Poslední sekce</h1>
+    <p></p>
+  </div>
+</section>
+    <div id="progress-bar"></div>
+
+
+  </div>
+</div>
+</div>
+</body>
 </html>
+
