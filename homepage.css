@@ -1,105 +1,771 @@
-body{
-    flex-direction: column;
+/* Globální reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-*{
-    text-align: center;
-    margin:0;
-    padding:0;
-    color:#83e935;
-    font-size:55px;
-    text-transform: uppercase;
-    font-family: 'Geist';
 
+/* Tělo stránky */
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: white;
 }
-body{
+
+/* Úvodní sekce (fullscreen) */
+#intro {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Sekce bude mít výšku celé obrazovky */
+    background-color: #f0f0f0;
+    text-align: center;
 }
-h1{
-    font-size:2em;
-}
-ul{
-    display:flex;
-    justify-content:center;
-    padding:2%;
-}
-li{
-    display:inline;
-    padding:5%;
-}
-a{
-    text-decoration:none;
-}
-li a i:hover{
-    color:#000000;
-}
-.button {
-    padding: 16px 42px;
-    border-radius: 20px;
 
-    line-height: 1.25;
-    background: transparent;
-    text-decoration: none;
-    user-select: none;
+/* Text v úvodní sekci */
+#intro .letters {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+}
 
-    color: #31363F ;
-    font-size: 23px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    position: relative;
-    transition: background-color .6s ease;
+/* Sekce #start (tlačítka a text pod sebou) */
+#start {
+    height: 100vh;  /* Celková výška obrazovky */
+    display: flex;
+    flex-direction: column;  /* Stohujeme obsah vertikálně */
+    justify-content: center;  /* Vertikální centrování textu */
+    align-items: center;      /* Horizontální centrování textu */
+    background-color: white;
+    text-align: center;
+    position: relative;  /* Aby tlačítka byla umístěna absolutně ve vztahu k této sekci */
+
+}
+
+/* Typing text (animovaný text) */
+.typing-text {
+    font-size: 4.7rem;
+    font-weight: bold;
+    position: relative;  /* Text bude ve středu obrazovky */
+    display: inline-block;
+    animation: typing 4s steps(20, end), blink 0.5s step-end infinite alternate;
+    white-space: nowrap;
     overflow: hidden;
-    &:after {
-        content: "";
-        position: absolute;
+    border-right: 2px solid #333;
+}
+
+/* Animace psaní */
+@keyframes typing {
+    from {
         width: 0;
-        height: 0;
-        top: 50%;
-        left: 50%;
-        transform-style: flat;
-        transform: translate3d(-50%,-50%,0);
-        border-radius: 100%;
-        transition: width .3s ease, height .3s ease;
     }
-    &:focus,
-    &:hover {
+    to {
+        width: 100%;
+    }
+}
 
+/* Efekt blikajícího kurzoru */
+@keyframes blink {
+    from {
+        border-color: transparent;
     }
-    &:active {
-        &:after {
-            width: 300px;
-            height: 300px;
-        }
+    to {
+        border-color: #333;
+    }
+}
+.txt-rotate{
+    font-size: 4rem;
+    color: indianred;
+}
+/* Tlačítka */
+/* Tlačítka */
+.buttons-wrapper {
+    position: fixed;  /* Pevně umístíme tlačítka na spodní část obrazovky */
+    bottom: 40px;  /* Zvýšení vzdálenosti od spodního okraje na 40px */
+    left: 50%;  /* Umístíme je horizontálně do středu */
+    transform: translateX(-50%);  /* Aby byly tlačítka přesně uprostřed */
+    display: flex;
+    justify-content: center;  /* Horizontální zarovnání tlačítek */
+    gap: 30px;  /* Větší mezera mezi tlačítky */
+    z-index: 2;  /* Aby tlačítka byly nad pozadím */
+    padding: 15px 30px;  /* Vnitřní padding pro box */
+    border-radius: 25px;  /* Zaoblené rohy */
+    background-color: rgba(255, 255, 255, 0.2);  /* Poloprůhledné pozadí */
+    backdrop-filter: blur(10px);  /* Blur efekt na pozadí */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);  /* Jemný stín pro lepší viditelnost */
+}
+
+/* Stylování tlačítek */
+.buttons .button {
+    padding: 15px 30px;  /* Zvýšení paddingu pro širší tlačítka */
+    background-color: transparent;
+    color: dimgray;
+    text-decoration: none;
+    border-radius: 25px;  /* Zaoblené rohy */
+    font-size: 1.2rem;  /* Větší font pro lepší čitelnost */
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Hover efekt pro tlačítka */
+.buttons .button:hover {
+    transform: scale(1.1);  /* Zvětšení tlačítka při hoveru */
+    color: indianred;
+    letter-spacing: 1px;  /* Efekt textu přiblíženého při hoveru */
+}
+
+/* Přidání vlnkového efektu při hoveru */
+.buttons .button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);  /* Světlejší vlnka */
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.buttons .button:hover:before {
+    transform: scale(1);  /* Efekt vlnky při hoveru */
+}
+
+
+
+
+
+/* Animace pro text psaní */
+.typing-text {
+    font-size: 3.7rem;
+    color: indianred;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    animation: typing 4s steps(20, end), blink 0.5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: "Bold", Geist;
+    border-right: 2px solid #333;
+    margin-bottom: 30px;  /* Vzdálenost mezi textem a tlačítky */
+}
+/* Animace psaní */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Efekt blikajícího kurzoru */
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+    to {
+        border-color: #333;
+    }
+}
+
+/* Sekce */
+.section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Bold", Geist;
+    opacity: 0;
+    transform: translate(-50%, 50px);
+    transition: opacity 0.6s, transform 0.6s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.section.moving {
+    transform: translate(-10vw, -20vh);
+}
+
+.section:nth-child(odd) {
+    background-color: transparent;
+}
+
+.section:nth-child(even) {
+    background-color: transparent;
+}
+
+
+
+
+/* Obsah sekce */
+.content {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+
+
+#section1{
+    height: 30vh;
+    top: 100px;
+}
+
+
+
+
+/* Klíčové snímky pro psaní textu */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Blikající kurzor */
+@keyframes blink {
+    from {
+        border-color: transparent;
+    }
+    to {
+        border-color: #333;
     }
 }
 
 
 
-@media (min-width: 768px) {
-    * {
-        font-size: 55px;
+/* Klíčové snímky animace */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
     }
 }
 
-/* Pro obrazovky užší než 768px */
+/* Sekce o mně */
+.about-section {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    padding: 0 5%;
+    overflow: auto;
+}
+
+/* Fotka */
+.about-photo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: transform 0.8s ease-out;
+    will-change: transform;
+}
+
+.about-photo img {
+    width: 70%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Obsah */
+.about-content {
+    flex: 1;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+/* Nadpis */
+.animated-title {
+    font-size: 3rem;
+    color: indianred;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Text */
+.animated-text {
+    font-size: 1.5rem;
+    color: black;
+    line-height: 1.6;
+}
+
+/* Tlačítko */
+.animated-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.animated-button:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Aktivní animace při scrollu */
+.about-photo.active {
+    transform: translateX(0);
+}
+
+.about-content.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Jemný pohyb myší */
+.about-photo img,
+.about-content {
+    transition: transform 0.1s ease-out;
+}
+
+/* Úvodní animace */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    z-index: 1000; /* Zajistí, že intro je nad hlavním obsahem */
+    top: 0;
+    left: 0;
+    overflow: hidden; /* Pokud chcete skrýt scrollování během úvodní animace */
+    transition: opacity 1s ease, transform 1s ease; /* Přechod pro posun a průhlednost */
+}
+
+.letters {
+    position: relative;
+}
+
+.letter {
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.1); /* Výchozí barva průhledná šedá */
+    opacity: 0;
+    transform: translateY(-200px); /* Startovní pozice nahoře mimo obrazovku */
+    animation: fall 1.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    position: relative;
+}
+
+/* Gradientové kolečko */
+.letter::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0));
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: flash 1s ease forwards;
+}
+
+/* Každé písmeno má náhodnou barvu */
+.letter:nth-child(odd) {
+    color: indianred;
+
+}
+
+.letter:nth-child(even) {
+    color: indianred;
+}
+
+/* Animace pádu */
+@keyframes fall {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Záblesk animace */
+@keyframes flash {
+    to {
+        width: 100px;
+        height: 100px;
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Konečná barva (černá) */
+.blacken {
+    color: black !important;
+    transition: color 0.5s ease;
+}
+
+.welcome {
+    position: fixed;
+    font-size: 5rem;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    z-index: 10;
+}
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;  /* Začíná na 0% */
+    height: 5px;  /* Výška progress baru */
+    background-color: indianred;  /* Barva progress baru */
+    z-index: 1000;  /* Aby byl nad ostatními elementy */
+    transition: width 0.25s ease-out;
+}
+/* Obecné resetování */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tělo stránky */
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Zamezíme horizontálnímu scrollu na celé stránce */
+}
+
+/* Slider-wrapper pro ohraničení pohybujících se obrázků */
+.slider-wrapper {
+    width: 100%;
+    height: 100vh; /* Celá výška obrazovky */
+    overflow: hidden; /* Skrývá přetékající obsah */
+    position: relative;
+    display: flex;
+    justify-content: center; /* Horizontálně centeruje */
+    align-items: center; /* Vertikálně centeruje */
+}
+
+/* Obsah slideru (obrázky) */
+.slider-content {
+    display: flex;
+    transition: transform 0.1s ease-out; /* Plynulý přechod pro efekt */
+    width: max-content; /* Zajistí, že obsah bude mít šířku podle obrázků */
+    margin-left: 2200px;
+
+}
+
+.slider-content img {
+    width: 400px; /* Šířka obrázku */
+    height: auto; /* Automatická výška pro zachování poměru stran */
+    object-fit: contain; /* Udržuje obrázky v původním poměru */
+    margin-right: 30px; /* Mezera mezi obrázky */
+
+}
+
+#parallax-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.parallax-content {
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.1s ease-out;
+}
+
+.stats-section {
+    padding: 60px 20px;
+    background-color: white; /* Světle šedé pozadí pro sekci statistik */
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: dimgray;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: indianred;
+    margin: 0;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #777;
+}
+
+/* Dekorativní obdélníky */
+.decor-line {
+    position: absolute;
+    height: 4px; /* Tloušťka obdélníku */
+    background-color: #333; /* Barva dekorace */
+    transition: transform 1s cubic-bezier(0.2, 1.5, 0.5, 1); /* Pomalější pružinový efekt */
+    transform-origin: left; /* Výchozí bod animace */
+    transform: scaleX(0); /* Začínají neviditelné */
+    z-index: 1;
+}
+
+/* Dekorace pod fotkou */
+.left-line {
+    width: 150px; /* Délka obdélníku */
+    bottom: -30px; /* Umístění pod fotkou */
+    left: 0;
+}
+
+/* Dekorace nad textem */
+.right-line {
+    width: 180px; /* Délka obdélníku */
+    top: -30px; /* Umístění nad textem */
+    right: 0;
+    transform-origin: right; /* Vyjede zprava */
+}
+
+/* Aktivní animace pro dekorace */
+.about-section.visible .decor-line {
+    transform: scaleX(1.3); /* Vyjedou mírně za své pozice */
+}
+
+/* Pro zařízení s šířkou do 768px (typický mobilní formát) */
 @media (max-width: 768px) {
-    * {
-        font-size: 30px;
+    /* Příklad změn pro úpravu vzhledu */
+    body {
+        font-size: 14px; /* Snížení velikosti písma pro mobilní zařízení */
+    }
+
+    /* Zajistíme, že se text bude lépe přizpůsobovat */
+    .txt-rotate > .wrap {
+        border-right: none; /* Odstranění blikajícího kurzoru pro lepší čitelnost */
+    }
+
+    /* Změna pozicování pro sekce */
+    .section {
+        padding: 20px; /* Změníme padding pro lepší rozložení */
+    }
+
+    /* Změna pozicování pro některé obrázky nebo obsah */
+    .about-photo img {
+        width: 100%; /* Zajistíme, že obrázek nebude přesahovat okraj */
+        max-width: 100%;
+        height: auto;
+    }
+
+    .slider-content {
+        transform: translateX(50px); /* Snížíme počáteční posun pro menší obrazovky */
+    }
+
+    /* Skrývání určitých elementů pro malé obrazovky */
+    .no-scroll {
+        overflow: hidden; /* Případně skrýt scrollování, pokud je potřeba */
     }
 }
 
+/* Pro zařízení s šířkou do 480px (typické pro mobilní telefony) */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px; /* Snížení písma pro opravdu malé obrazovky */
+    }
 
-@media screen and (max-width: 768px) {
-    .buttons {
-        display: block;
-        width: auto;
-        float: none;
+    .intro {
+        font-size: 16px; /* Menší úvodní text */
+    }
+
+    /* Snížíme velikost písma a mezery */
+    .about-section .about-content {
+        font-size: 12px;
+    }
+
+    /* Změna pro scroll bar */
+    #progress-bar {
+        height: 5px; /* Menší výška pro progress bar */
+    }
+
+    /* Upravíme chování parallax efektu na menších obrazovkách */
+    .about-section {
+        transform: none; /* Na mobilu nechceme, aby parallax efekt byl příliš silný */
     }
 }
 
-@font-face {
-    font-family: 'Geist'; /* Name your font family */
-    src: url('webfontkit-20241021-152548/geist-bold-webfont.woff'); /* Locate the .ttf file within your directory*/
+/* Styl sekce */
+.section {
+    height: 200vh; /* Dlouhá stránka pro scroll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
+
+.content {
+    position: relative;
+    text-align: center;
+}
+
+.typing-text {
+    font-size: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Styl pro obdélníky */
+.scroll-rectangle {
+    position: absolute;
+    height: 10px; /* Ztenčení obdélníků */
+    background-color: indianred;
+    opacity: 0; /* Výchozí stav: neviditelné */
+    transition: transform 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045), opacity 0.3s ease-in;
+}
+
+.top-rectangle {
+    top: -30px; /* Nad textem */
+    width: 150%; /* Začíná mimo obrazovku */
+    left: 100%; /* Začíná na pravé straně obrazovky */
+    transform: translateX(0) scaleX(1);
+}
+
+.bottom-rectangle {
+    bottom: -30px; /* Pod textem */
+    width: 150%; /* Začíná mimo obrazovku */
+    left: -150%; /* Začíná na levé straně obrazovky */
+    transform: translateX(0) scaleX(1);
+}
+
+/* Aktivace animace */
+.scroll-rectangle.active {
+    opacity: 1; /* Zviditelnění */
+    transform: translateX(-150%) scaleX(1.3); /* Přejezd a lehké roztáhnutí */
+}
+
+/* Zmizení mimo obrazovku */
+.scroll-rectangle.hide {
+    transform: translateX(-200%) scaleX(0.8); /* Smrštění při zmizení */
+    opacity: 0; /* Zneviditelnění */
+}
+
+.gallery-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.thumbnails {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.thumbnails div {
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    background: #aaa;
+    border-radius: 100%;
+}
+
+.thumbnails div.highlighted {
+    background-color: #777;
+}
+
+.slides {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 1rem;
+    height: 100vh;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+}
+
+.slides > div {
+    display: flex;
+    scroll-snap-align: start;
+    height: 100vh;
+    align-items: center;
+    position: relative;
+}
+
+.slide-bg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.slide-bg img {
+    width: 40%;
+    max-height: 80%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.slide-text {
+    width: 50%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.slides::-webkit-scrollbar {
+    display: none;
+}
+
